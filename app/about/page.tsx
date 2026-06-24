@@ -127,7 +127,7 @@ export default function AboutPage() {
               {/* Frontend */}
               <FadeIn delay={0.1}>
                 <Card className="flex flex-col items-center text-center h-full">
-                  <div className="w-12 h-12 rounded-full bg-orange-50 flex items-center justify-center text-accent-orange mb-6">
+                  <div className="w-12 h-12 rounded-full bg-orange-50 dark:bg-accent-orange/15 flex items-center justify-center text-accent-orange mb-6">
                     <LayoutTemplate size={24} />
                   </div>
                   <h3 className="text-lg font-bold text-text-primary-light mb-6">Frontend</h3>
@@ -149,7 +149,7 @@ export default function AboutPage() {
               {/* Backend */}
               <FadeIn delay={0.2}>
                 <Card className="flex flex-col items-center text-center h-full">
-                  <div className="w-12 h-12 rounded-full bg-orange-50 flex items-center justify-center text-accent-orange mb-6">
+                  <div className="w-12 h-12 rounded-full bg-orange-50 dark:bg-accent-orange/15 flex items-center justify-center text-accent-orange mb-6">
                     <Server size={24} />
                   </div>
                   <h3 className="text-lg font-bold text-text-primary-light mb-6">Backend</h3>
@@ -171,7 +171,7 @@ export default function AboutPage() {
               {/* Databases, Cloud & Embedded */}
               <FadeIn delay={0.3}>
                 <Card className="flex flex-col items-center text-center h-full">
-                  <div className="w-12 h-12 rounded-full bg-blue-50 flex items-center justify-center text-blue-500 mb-6">
+                  <div className="w-12 h-12 rounded-full bg-blue-50 dark:bg-blue-950/20 flex items-center justify-center text-blue-500 mb-6">
                     <Database size={24} />
                   </div>
                   <h3 className="text-lg font-bold text-text-primary-light mb-6">Databases, Cloud & Embedded</h3>

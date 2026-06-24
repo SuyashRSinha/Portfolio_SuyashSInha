@@ -3,6 +3,7 @@ import { useState, useEffect } from 'react'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 import { Menu, X, Code, MessageCircle } from 'lucide-react'
+import ThemeToggle from './ThemeToggle'
 
 const navLinks = [
   { label: 'About', href: '/about' },
@@ -22,7 +23,7 @@ export default function Navbar() {
 
   return (
     <>
-      <nav className="fixed top-4 left-1/2 -translate-x-1/2 w-[95%] max-w-[800px] bg-white/90 backdrop-blur-md border border-border-light rounded-full px-6 py-3 z-50 shadow-sm flex items-center justify-between">
+      <nav className="fixed top-4 left-1/2 -translate-x-1/2 w-[95%] max-w-[800px] bg-bg-card/90 backdrop-blur-md border border-border-light rounded-full px-6 py-3 z-50 shadow-sm flex items-center justify-between transition-colors duration-300">
         {/* Logo */}
         <Link href="/" className="font-bold text-text-primary-light whitespace-nowrap text-[15px]">
           Suyash Ranjan Sinha
@@ -46,6 +47,7 @@ export default function Navbar() {
 
         {/* Right CTAs */}
         <div className="flex items-center gap-3">
+          <ThemeToggle />
           <Link
             href="/contact"
             className="btn-primary py-2 px-5 text-xs hidden sm:inline-flex"
@@ -90,7 +92,7 @@ export default function Navbar() {
             className="absolute inset-0 bg-black/50 backdrop-blur-sm"
             onClick={() => setMobileOpen(false)}
           />
-          <div className="absolute top-20 left-1/2 -translate-x-1/2 w-[90%] max-w-[400px] bg-white rounded-2xl shadow-xl border border-border-light p-6 space-y-4">
+          <div className="absolute top-20 left-1/2 -translate-x-1/2 w-[90%] max-w-[400px] bg-bg-card rounded-2xl shadow-xl border border-border-light p-6 space-y-4 transition-colors duration-300">
             {navLinks.map((link) => (
               <Link
                 key={link.href}
@@ -107,7 +109,7 @@ export default function Navbar() {
               <Link href="/contact" className="btn-primary py-2.5 px-6 text-sm flex-1 justify-center">
                 Let&apos;s talk
               </Link>
-              <a href="https://github.com" target="_blank" rel="noopener noreferrer" className="p-2 text-text-body hover:text-text-primary-dark transition-colors bg-white hover:bg-gray-50 border border-border-light rounded-full" aria-label="GitHub">
+              <a href="https://github.com" target="_blank" rel="noopener noreferrer" className="p-2 text-text-body hover:text-text-primary-dark transition-colors bg-bg-card hover:bg-bg-body border border-border-light rounded-full" aria-label="GitHub">
                 <Code size={22} />
               </a>
             </div>
