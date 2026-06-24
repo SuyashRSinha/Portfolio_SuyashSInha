@@ -47,7 +47,7 @@ export default function ContactPage() {
           <div className="max-w-[1100px] mx-auto grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
             
             {/* Left: Form Card */}
-            <FadeIn className="lg:col-span-7 bg-bg-card border border-border-light rounded-2xl p-8 md:p-10 shadow-sm">
+            <FadeIn className="lg:col-span-7 bg-bg-card border border-border-light rounded-2xl p-8 md:p-10 shadow-sm transition-colors duration-300">
               <form className="flex flex-col gap-6">
                 <div>
                   <label htmlFor="name" className="block text-[13px] font-semibold text-text-primary-light mb-2">Name</label>
@@ -55,7 +55,7 @@ export default function ContactPage() {
                     type="text" 
                     id="name" 
                     name="name" 
-                    className="w-full bg-white border border-border-light rounded-lg px-4 py-3 text-sm focus:ring-accent-orange focus:border-accent-orange outline-none transition-colors shadow-sm placeholder-gray-400" 
+                    className="w-full bg-bg-body text-text-primary-light border border-border-light rounded-lg px-4 py-3 text-sm focus:ring-accent-orange focus:border-accent-orange outline-none transition-colors shadow-sm placeholder-gray-400" 
                   />
                 </div>
                 <div>
@@ -64,7 +64,7 @@ export default function ContactPage() {
                     type="email" 
                     id="email" 
                     name="email" 
-                    className="w-full bg-white border border-border-light rounded-lg px-4 py-3 text-sm focus:ring-accent-orange focus:border-accent-orange outline-none transition-colors shadow-sm placeholder-gray-400" 
+                    className="w-full bg-bg-body text-text-primary-light border border-border-light rounded-lg px-4 py-3 text-sm focus:ring-accent-orange focus:border-accent-orange outline-none transition-colors shadow-sm placeholder-gray-400" 
                   />
                 </div>
                 <div>
@@ -72,7 +72,7 @@ export default function ContactPage() {
                   <select 
                     id="need" 
                     name="need"
-                    className="w-full bg-white border border-border-light rounded-lg px-4 py-3 text-sm focus:ring-accent-orange focus:border-accent-orange outline-none transition-colors shadow-sm text-text-body appearance-none"
+                    className="w-full bg-bg-body text-text-primary-light border border-border-light rounded-lg px-4 py-3 text-sm focus:ring-accent-orange focus:border-accent-orange outline-none transition-colors shadow-sm appearance-none"
                   >
                     <option value="web">Web app</option>
                     <option value="ai">AI integration</option>
@@ -87,7 +87,7 @@ export default function ContactPage() {
                     id="message" 
                     name="message" 
                     rows={5}
-                    className="w-full bg-white border border-border-light rounded-lg px-4 py-3 text-sm focus:ring-accent-orange focus:border-accent-orange outline-none transition-colors shadow-sm resize-y" 
+                    className="w-full bg-bg-body text-text-primary-light border border-border-light rounded-lg px-4 py-3 text-sm focus:ring-accent-orange focus:border-accent-orange outline-none transition-colors shadow-sm resize-y" 
                   ></textarea>
                 </div>
                 <button 

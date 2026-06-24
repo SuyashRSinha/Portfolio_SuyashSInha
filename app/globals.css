@@ -1,22 +1,53 @@
 @import "tailwindcss";
 
+@custom-variant dark (&:where(.dark, .dark *));
+
+:root {
+  --bg-dark: #0f0e0c;
+  --bg-body: #f5f0e8;
+  --bg-card: #ffffff;
+  --bg-card-dark: #1a1916;
+  --bg-section: #1c1a17;
+  --accent-orange: #c44b1b;
+  --accent-orange-hover: #a83c14;
+  --text-primary-dark: #ffffff;
+  --text-primary-light: #111111;
+  --text-body: #3d3a35;
+  --text-muted: #888880;
+  --text-orange: #c44b1b;
+  --border-light: #e5e0d8;
+  --border-dark: #2a2825;
+  --tag-bg: #edebe5;
+  --tag-bg-dark: #252320;
+}
+
+.dark {
+  --bg-body: #0f0e0c;
+  --bg-card: #1a1916;
+  --text-primary-light: #ffffff;
+  --text-body: #d3cfc9;
+  --text-muted: #9c9a93;
+  --border-light: #2a2825;
+  --tag-bg: #252320;
+}
+
 @theme inline {
-  --color-bg-dark: #0f0e0c;
-  --color-bg-body: #f5f0e8;
-  --color-bg-card: #ffffff;
-  --color-bg-card-dark: #1a1916;
-  --color-bg-section: #1c1a17;
-  --color-accent-orange: #c44b1b;
-  --color-accent-orange-hover: #a83c14;
-  --color-text-primary-dark: #ffffff;
-  --color-text-primary-light: #111111;
-  --color-text-body: #3d3a35;
-  --color-text-muted: #888880;
-  --color-text-orange: #c44b1b;
-  --color-border-light: #e5e0d8;
-  --color-border-dark: #2a2825;
-  --color-tag-bg: #edebe5;
-  --color-tag-bg-dark: #252320;
+  --color-bg-dark: var(--bg-dark);
+  --color-bg-body: var(--bg-body);
+  --color-bg-card: var(--bg-card);
+  --color-bg-card-dark: var(--bg-card-dark);
+  --color-bg-section: var(--bg-section);
+  --color-accent-orange: var(--accent-orange);
+  --color-accent-orange-hover: var(--accent-orange-hover);
+  --color-text-primary-dark: var(--text-primary-dark);
+  --color-text-primary-light: var(--text-primary-light);
+  --color-text-body: var(--text-body);
+  --color-text-muted: var(--text-muted);
+  --color-text-orange: var(--text-orange);
+  --color-border-light: var(--border-light);
+  --color-border-dark: var(--border-dark);
+  --color-tag-bg: var(--tag-bg);
+  --color-tag-bg-dark: var(--tag-bg-dark);
 
   --font-serif: "EB Garamond", Georgia, serif;
   --font-sans: "Inter", system-ui, sans-serif;
@@ -26,6 +57,7 @@ body {
   background-color: var(--color-bg-body);
   color: var(--color-text-body);
   font-family: var(--font-sans);
+  transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
 }
 
 ::selection {

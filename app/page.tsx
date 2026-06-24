@@ -136,7 +136,7 @@ export default function HomePage() {
                   {techStack.map((tech, idx) => (
                     <span
                       key={`${tech.name}-${idx}`}
-                      className="inline-flex items-center gap-2.5 bg-white border border-border-light text-text-primary-light text-sm font-medium px-5 py-2.5 rounded-full shadow-sm hover:border-accent-orange transition-colors cursor-default"
+                      className="inline-flex items-center gap-2.5 bg-bg-card border border-border-light text-text-primary-light text-sm font-medium px-5 py-2.5 rounded-full shadow-sm hover:border-accent-orange transition-colors duration-200 cursor-default"
                     >
                       {renderTechIcon(tech)}
                       <span>{tech.name}</span>
@@ -146,7 +146,7 @@ export default function HomePage() {
                   {techStack.map((tech, idx) => (
                     <span
                       key={`${tech.name}-dup-${idx}`}
-                      className="inline-flex items-center gap-2.5 bg-white border border-border-light text-text-primary-light text-sm font-medium px-5 py-2.5 rounded-full shadow-sm hover:border-accent-orange transition-colors cursor-default"
+                      className="inline-flex items-center gap-2.5 bg-bg-card border border-border-light text-text-primary-light text-sm font-medium px-5 py-2.5 rounded-full shadow-sm hover:border-accent-orange transition-colors duration-200 cursor-default"
                     >
                       {renderTechIcon(tech)}
                       <span>{tech.name}</span>
@@ -158,7 +158,7 @@ export default function HomePage() {
           </div>
         </section>
 
-        <section className="py-24 px-6 bg-white">
+        <section className="py-24 px-6 bg-bg-card border-b border-border-light transition-colors duration-300">
           <div className="max-w-[1100px] mx-auto">
             <FadeIn>
               <div className="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-6">
@@ -171,7 +171,7 @@ export default function HomePage() {
                 <Button
                   href="/projects"
                   variant="ghost-dark"
-                  className="!text-text-primary-light !border-border-dark hover:!bg-gray-50 w-fit"
+                  className="!text-text-primary-light !border-border-dark hover:!bg-bg-body w-fit"
                 >
                   View all 13 projects
                 </Button>
@@ -191,7 +191,7 @@ export default function HomePage() {
                     </div>
                     <div className="p-8 flex flex-col flex-grow">
                       <div className="flex gap-2 mb-4">
-                        <span className="bg-white text-text-body text-[11px] font-bold px-2.5 py-1 rounded-full uppercase tracking-widest border border-border-light">
+                        <span className="bg-bg-card text-text-body text-[11px] font-bold px-2.5 py-1 rounded-full uppercase tracking-widest border border-border-light">
                           {project.category}
                         </span>
                       </div>
@@ -205,7 +205,7 @@ export default function HomePage() {
                         {project.techStack.slice(0, 3).map((tech) => (
                           <span
                             key={tech}
-                            className="text-xs text-text-muted font-medium px-2 py-1 bg-white rounded border border-border-light"
+                            className="text-xs text-text-muted font-medium px-2 py-1 bg-bg-card rounded border border-border-light"
                           >
                             {tech}
                           </span>
@@ -245,7 +245,7 @@ export default function HomePage() {
             <div className="grid md:grid-cols-3 gap-6">
               <FadeIn delay={0.1}>
                 <Card className="text-center flex flex-col items-center p-8 h-full">
-                  <div className="w-12 h-12 rounded-xl bg-orange-50 text-accent-orange flex items-center justify-center mb-6">
+                  <div className="w-12 h-12 rounded-xl bg-orange-50 dark:bg-accent-orange/15 text-accent-orange flex items-center justify-center mb-6">
                     <ShoppingCart size={24} />
                   </div>
                   <h3 className="text-xl font-bold font-serif mb-4 text-text-primary-light">
@@ -265,7 +265,7 @@ export default function HomePage() {
 
               <FadeIn delay={0.2}>
                 <Card className="text-center flex flex-col items-center p-8 h-full">
-                  <div className="w-12 h-12 rounded-xl bg-cyan-50 text-cyan-600 flex items-center justify-center mb-6">
+                  <div className="w-12 h-12 rounded-xl bg-cyan-50 dark:bg-cyan-950/20 text-cyan-600 flex items-center justify-center mb-6">
                     <Bot size={24} />
                   </div>
                   <h3 className="text-xl font-bold font-serif mb-4 text-text-primary-light">
@@ -285,7 +285,7 @@ export default function HomePage() {
 
               <FadeIn delay={0.3}>
                 <Card className="text-center flex flex-col items-center p-8 h-full">
-                  <div className="w-12 h-12 rounded-xl bg-purple-50 text-purple-600 flex items-center justify-center mb-6">
+                  <div className="w-12 h-12 rounded-xl bg-purple-50 dark:bg-purple-950/20 text-purple-600 flex items-center justify-center mb-6">
                     <Terminal size={24} />
                   </div>
                   <h3 className="text-xl font-bold font-serif mb-4 text-text-primary-light">
@@ -306,7 +306,7 @@ export default function HomePage() {
           </div>
         </section>
 
-        <section className="py-24 px-6 bg-white border-t border-border-light">
+        <section className="py-24 px-6 bg-bg-card border-t border-border-light transition-colors duration-300">
           <div className="max-w-[1100px] mx-auto">
             <div className="grid md:grid-cols-2 gap-12 items-center">
               <div>
@@ -325,7 +325,7 @@ export default function HomePage() {
                     variant="ghost-dark"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="!text-text-primary-light !border-border-dark hover:!bg-gray-50"
+                    className="!text-text-primary-light !border-border-dark hover:!bg-bg-body"
                   >
                     Download PDF
                   </Button>

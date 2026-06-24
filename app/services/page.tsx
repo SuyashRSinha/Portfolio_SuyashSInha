@@ -51,15 +51,15 @@ export default function ServicesPage() {
               
               {/* Service 1 */}
               <FadeIn delay={0.1}>
-                <div className="bg-white rounded-[24px] p-8 border border-border-light shadow-sm flex flex-col hover:shadow-md transition-shadow h-full">
-                <div className="w-12 h-12 rounded-xl bg-orange-50 text-accent-orange flex items-center justify-center mb-6">
+                <div className="bg-bg-card rounded-[24px] p-8 border border-border-light shadow-sm flex flex-col hover:shadow-md transition-all h-full">
+                <div className="w-12 h-12 rounded-xl bg-orange-50 dark:bg-accent-orange/15 text-accent-orange flex items-center justify-center mb-6">
                   <ShoppingCart size={24} />
                 </div>
-                <h3 className="text-2xl font-bold mb-4 font-serif text-gray-900">Web Apps, E-commerce & Marketplaces</h3>
-                <p className="text-gray-600 mb-8 text-sm leading-relaxed">
+                <h3 className="text-2xl font-bold mb-4 font-serif text-text-primary-light">Web Apps, E-commerce & Marketplaces</h3>
+                <p className="text-text-body mb-8 text-sm leading-relaxed">
                   Custom applications and digital storefronts built from scratch with Next.js, React, and Node.js. Vendor dashboards, complex search, and secure payments.
                 </p>
-                <ul className="space-y-3 mb-8 text-sm text-gray-600 flex-grow">
+                <ul className="space-y-3 mb-8 text-sm text-text-body flex-grow">
                   <li className="flex items-start gap-2">
                     <span className="text-accent-orange font-bold">✓</span> Vendor & admin dashboards
                   </li>
@@ -80,15 +80,15 @@ export default function ServicesPage() {
 
               {/* Service 2 */}
               <FadeIn delay={0.2}>
-                <div className="bg-white rounded-[24px] p-8 border border-border-light shadow-sm flex flex-col hover:shadow-md transition-shadow h-full">
-                <div className="w-12 h-12 rounded-xl bg-orange-50 text-accent-orange flex items-center justify-center mb-6">
+                <div className="bg-bg-card rounded-[24px] p-8 border border-border-light shadow-sm flex flex-col hover:shadow-md transition-all h-full">
+                <div className="w-12 h-12 rounded-xl bg-orange-50 dark:bg-accent-orange/15 text-accent-orange flex items-center justify-center mb-6">
                   <Bot size={24} />
                 </div>
-                <h3 className="text-2xl font-bold mb-4 font-serif text-gray-900">AI Integration & Automation</h3>
-                <p className="text-gray-600 mb-8 text-sm leading-relaxed">
+                <h3 className="text-2xl font-bold mb-4 font-serif text-text-primary-light">AI Integration & Automation</h3>
+                <p className="text-text-body mb-8 text-sm leading-relaxed">
                   Claude, OpenAI, and custom LLM features embedded into your workflow. Document processing pipelines, automated agents, and intelligent chatbots.
                 </p>
-                <ul className="space-y-3 mb-8 text-sm text-gray-600 flex-grow">
+                <ul className="space-y-3 mb-8 text-sm text-text-body flex-grow">
                   <li className="flex items-start gap-2">
                     <span className="text-accent-orange font-bold">✓</span> Custom AI Assistants
                   </li>
@@ -109,15 +109,15 @@ export default function ServicesPage() {
 
               {/* Service 3 */}
               <FadeIn delay={0.3}>
-                <div className="bg-white rounded-[24px] p-8 border border-border-light shadow-sm flex flex-col hover:shadow-md transition-shadow h-full">
-                <div className="w-12 h-12 rounded-xl bg-cyan-50 text-cyan-600 flex items-center justify-center mb-6">
+                <div className="bg-bg-card rounded-[24px] p-8 border border-border-light shadow-sm flex flex-col hover:shadow-md transition-all h-full">
+                <div className="w-12 h-12 rounded-xl bg-cyan-50 dark:bg-cyan-950/20 text-cyan-600 flex items-center justify-center mb-6">
                   <Terminal size={24} />
                 </div>
-                <h3 className="text-2xl font-bold mb-4 font-serif text-gray-900">Business Systems & Internal Tools</h3>
-                <p className="text-gray-600 mb-8 text-sm leading-relaxed">
+                <h3 className="text-2xl font-bold mb-4 font-serif text-text-primary-light">Business Systems & Internal Tools</h3>
+                <p className="text-text-body mb-8 text-sm leading-relaxed">
                   Bespoke internal dashboards, CRM integrations, and data reporting tools designed exactly for how your team works.
                 </p>
-                <ul className="space-y-3 mb-8 text-sm text-gray-600 flex-grow">
+                <ul className="space-y-3 mb-8 text-sm text-text-body flex-grow">
                   <li className="flex items-start gap-2">
                     <span className="text-accent-orange font-bold">✓</span> Multi-role admin panels
                   </li>
@@ -141,7 +141,7 @@ export default function ServicesPage() {
         </section>
 
         {/* Explore Grid */}
-        <section className="bg-white py-24 border-t border-border-light">
+        <section className="bg-bg-card py-24 border-t border-border-light transition-colors duration-300">
           <div className="max-w-[1100px] mx-auto px-6">
             <FadeIn>
               <Eyebrow className="mb-12">EXPLORE EACH SERVICE</Eyebrow>
@@ -156,12 +156,12 @@ export default function ServicesPage() {
                 { title: "Automation pipelines", desc: "Scheduled jobs, data synchronization, API integrations, and webhook-driven business logic." }
               ].map((item, idx) => (
                 <FadeIn key={idx} delay={0.1 * idx}>
-                  <a href="/contact" className="bg-bg-body p-6 rounded-2xl border border-border-light hover:border-gray-300 transition-all group flex flex-col h-full">
+                  <a href="/contact" className="bg-bg-body p-6 rounded-2xl border border-border-light hover:border-accent-orange/30 transition-all group flex flex-col h-full">
                     <div className="flex justify-between items-start mb-3">
-                    <h4 className="font-bold text-gray-900 group-hover:text-accent-orange transition-colors">{item.title}</h4>
-                    <ChevronRight size={16} className="text-gray-400 group-hover:text-accent-orange transition-colors" />
+                    <h4 className="font-bold text-text-primary-light group-hover:text-accent-orange transition-colors">{item.title}</h4>
+                    <ChevronRight size={16} className="text-text-muted group-hover:text-accent-orange transition-colors" />
                   </div>
-                  <p className="text-sm text-gray-500 leading-relaxed mt-auto">{item.desc}</p>
+                  <p className="text-sm text-text-muted leading-relaxed mt-auto">{item.desc}</p>
                 </a>
                 </FadeIn>
               ))}
@@ -187,8 +187,8 @@ export default function ServicesPage() {
                 "What happens after the project is launched?"
               ].map((question, i) => (
                 <FadeIn key={i} delay={0.1 * i}>
-                  <button className="bg-white border border-border-light px-6 py-5 rounded-xl flex justify-between items-center text-left hover:border-accent-orange/30 transition-colors w-full group shadow-sm">
-                    <span className="font-medium text-sm text-gray-800">{question}</span>
+                  <button className="bg-bg-card border border-border-light px-6 py-5 rounded-xl flex justify-between items-center text-left hover:border-accent-orange/30 transition-colors w-full group shadow-sm">
+                    <span className="font-medium text-sm text-text-primary-light">{question}</span>
                     <ChevronDown size={18} className="text-accent-orange group-hover:translate-y-0.5 transition-transform" />
                   </button>
                 </FadeIn>
