@@ -1,0 +1,92 @@
+---
+title: 'How I Built a Real-Time Video Platform with mediasoup'
+date: '10 Jun 2026'
+category: 'CASE STUDY'
+readTime: '7 min read'
+thumbnail: 'https://lh3.googleusercontent.com/aida-public/AB6AXuA7dJvd3t62hGmeO78n3lLtJZMYPUe88vZ5whPluIYJtvDqemOZpbHV2JRlNftIyNH1tdkXyXJcgZe0XYzAo_Vrp3gjERyIZy4uVddJuoyrQpyi-jPRt6bt0JLc6qYghAr_sBbrNU_Y-No0t2goYTbp-dovHL0uzcR_YUihSQ5bvX-spa57rD1Wshsp9cadv5J68hYFqn1ZZ_55ov5AYResowPRpphdHS4yNoFXfne4eK35M5jNFPR_9XMtrZDBqpLBdCxi48oDpwQ'
+excerpt: 'A deep dive into building SupportCast: WebRTC architecture decisions, mediasoup SFU setup, scaling challenges, and lessons from shipping a production video platform...'
+---
+
+When I started building SupportCast, the goal was simple: create a robust real-time video platform for customer support that didn't feel like a clunky enterprise tool. 
+
+The technical reality of WebRTC, however, is never simple. This post details how I navigated the architectural choices, specifically why I chose an SFU (Selective Forwarding Unit) over a mesh network, and why `mediasoup` was the right tool for the job.
+
+## The Architecture Decision: Mesh vs SFU vs MCU
+
+In WebRTC, there are generally three ways to route media between multiple participants:
+
+1. **Mesh Network:** Everyone connects directly to everyone else (P2P). Great for 2-3 people, terrible for scaling. The CPU and bandwidth requirements grow exponentially ($O(N^2)$).
+2. **MCU (Multipoint Control Unit):** A central server receives all streams, decodes them, mixes them into a single layout, encodes the result, and sends it back. Very efficient for the client, but highly CPU intensive on the server.
+3. **SFU (Selective Forwarding Unit):** A central server receives streams from everyone and selectively forwards them to others. It doesn't decode/re-encode media, making it highly scalable and flexible.
+
+For SupportCast, which needed to support multiple agents and screen sharing seamlessly, **SFU** was the clear winner.
+
+## Why mediasoup?
+
+I evaluated several SFUs: *Janus*, *Jitsi Videobridge*, *Pion*, and *mediasoup*. 
+
+I chose **mediasoup** for several reasons:
+
+- **Node.js integration:** It runs as a Node.js module (with a highly optimized C++ core). This allowed me to keep my signaling server and media server logic tightly coupled using TypeScript.
+- **Low level API:** It doesn't impose a specific signaling protocol. You build your own signaling (I used WebSockets), which gives you ultimate control over the application state.
+- **Performance:** It handles hundreds of concurrent streams on a standard server with minimal CPU usage.
+
+## The Signaling Flow
+
+Here is a simplified view of how a client connects to the mediasoup router:
+
+```typescript
+// 1. Client requests router RTP capabilities
+const routerRtpCapabilities = await socket.request('getRouterRtpCapabilities');
+
+// 2. Client creates a local Device
+const device = new mediasoupClient.Device();
+await device.load({ routerRtpCapabilities });
+
+// 3. Client requests a transport for sending media
+const transportInfo = await socket.request('createWebRtcTransport', { producing: true });
+
+// 4. Client creates local SendTransport
+const sendTransport = device.createSendTransport(transportInfo);
+
+// 5. Client produces media
+const stream = await navigator.mediaDevices.getUserMedia({ video: true, audio: true });
+const videoTrack = stream.getVideoTracks()[0];
+const producer = await sendTransport.produce({ track: videoTrack });
+```
+
+The complexity is in managing these state transitions robustly, handling network drops, and scaling across multiple worker threads.
+
+## Scaling Challenges
+
+Node.js is single-threaded. To scale mediasoup, you must spawn multiple `Workers` (which correspond to underlying C++ processes). 
+
+We implemented a router allocation strategy that distributes load across multiple CPUs:
+
+```typescript
+import * as mediasoup from 'mediasoup';
+
+const workers: mediasoup.types.Worker[] = [];
+let nextWorkerIdx = 0;
+
+export async function createWorker() {
+  const worker = await mediasoup.createWorker({
+    logLevel: 'warn',
+    rtcMinPort: 40000,
+    rtcMaxPort: 49999,
+  });
+  workers.push(worker);
+}
+
+export function getOptimalWorker() {
+  const worker = workers[nextWorkerIdx];
+  nextWorkerIdx = (nextWorkerIdx + 1) % workers.length;
+  return worker;
+}
+```
+
+## Lessons Learned
+
+Shipping SupportCast taught me that WebRTC is less about understanding the protocols and more about aggressively managing state and network conditions. A dropped WebSocket connection needs to be re-established gracefully without tearing down the underlying UDP media streams.
+
+If you are building a video platform today, start with an SFU, and strongly consider mediasoup if you already have a Node.js backend.
