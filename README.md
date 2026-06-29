@@ -1,4 +1,4 @@
-# Aesthetic Portfolio
+# Portfolio
 
 A modern, highly aesthetic, and fully responsive personal portfolio and blog built for full-stack developers and AI engineers.
 
