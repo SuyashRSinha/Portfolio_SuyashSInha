@@ -151,8 +151,8 @@ export default function ResumePage() {
         >
           <div className="flex flex-wrap gap-4 mt-6">
             <Button
-              href="/Suyash_Ranjan_Sinha_Resume.pdf"
-              download="/public/Suyash_Ranjan_Sinha_Resume.pdf"
+              href="/Suyash_Sinha_Resume.pdf"
+              download="/public/Suyash_Sinha_Resume.pdf"
               target="_blank"
               rel="noopener noreferrer"
               className="flex items-center gap-2"
